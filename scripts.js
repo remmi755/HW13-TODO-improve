@@ -10,13 +10,13 @@ class TodoList {
         this.findTodos = []
         this.el = el;
         this.el.addEventListener('click', (e) => {
-            let elemTarget = e.target.closest('li')
-            let id = elemTarget.dataset.id
+            let elemParentTarget = e.target.closest('li')
+            let id = elemParentTarget.dataset.id
             if (e.target.className === 'set-status') {
                 this.changeStatus(id)
-                this.changeColor(elemTarget)
+                this.changeColor(elemParentTarget)
             } else if (e.target.className === 'delete-task') {
-                elemTarget.remove()
+                elemParentTarget.remove()
                 this.removeTodo(id)
             }
         })
@@ -94,6 +94,5 @@ form.addEventListener('click', function (e) {
         todo1.findTasks()
         todo1.render(todo1.findTodos)
         todo1.showRightColor()
-        input.value = ''
     }
 })
